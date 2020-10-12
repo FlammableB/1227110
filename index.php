@@ -67,15 +67,35 @@
 // }
 // isThisSam("Saam");
 
-function login($username, $password) {
-    if ($username != "wm" || $password != "sexy") {
-        echo "Wrong username and password detected.";
-        return;
-    }
-    echo "Logged in:"
-    header("Location: index.html");
-}
+// function login($username, $password) {
+//     if ($username != "wm" || $password != "sexy") {
+//         echo "Wrong username and password detected.";
+//         return;
+//     }
+//     echo "Logged in:"
+//     header("Location: index.html");
+// }
 
-if (isset($_POST) $$ !empty($_POST)) {
-    login($_POST["usernname"], $_POST["password"]);
+// if (isset($_POST) $$ !empty($_POST)) {
+//     login($_POST["usernname"], $_POST["password"]);
+// }
+$adminUsername = "wm";
+$adminPassword = "1234";
+
+if (isset($_POST) && !empty($_POST)) {
+    if (isset($_POST["username"]) && 
+        !empty($_POST["username"]) && 
+        isset($_POST["password"]) && 
+        !empty($_POST["password"])
+        ) {
+            if ($_POST["username"] === $adminUsername &&
+                $_POST["password"] === $adminPassword
+            ) {
+                header("Location: welcome.html");
+            } else {
+                header("Location: index.html");
+        }
+    } else {
+    echo "Missing data";
+    }
 }
